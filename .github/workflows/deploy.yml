@@ -50,7 +50,7 @@ jobs:
 
       - name: Set YML
         run: |
-          echo "${{secrets.APPLICATION_PROPERTIES}}" | base64 --decode > src/main/resources/application.properties
+          src/main/resources/application.properties
           find src
         # [2]
       - name: Build with Gradle
