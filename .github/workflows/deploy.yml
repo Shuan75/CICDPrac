@@ -10,7 +10,7 @@ env:
   RESOURCE_PATH: ./src/main/resources/application.properties
   CODE_DEPLOY_APPLICATION_NAME: myserverbucket751-code-deploy
   CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: 751server
-  AWS_REGION: ap-northeast-2
+  AWS_REGION: ap-northeas t-2
 
 permissions:
   contents: read
@@ -33,6 +33,9 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
+      - name: Set executable permission for gradlew
+        run: chmod +x gradlew
+
       - name: Set Secret
         env:
           OCCUPY_SECRET: ${{ secrets.APPLICATION_PROPERTIES }}
@@ -48,8 +51,7 @@ jobs:
         with:
           arguments: clean build -x test
 
-      - name: Set executable permission for gradlew
-        run: chmod +x gradlew
+
 
       # (4) AWS 인증 (IAM 사용자 Access Key, Secret Key 활용)
       - name: Configure AWS credentials
