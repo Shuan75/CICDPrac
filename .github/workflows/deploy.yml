@@ -36,14 +36,14 @@ jobs:
       - name: Set executable permission for gradlew
         run: chmod +x gradlew
 
-      - name: Set Secret
-        env:
-          OCCUPY_SECRET: ${{ secrets.APPLICATION_PROPERTIES }}
-#        OCCUPY_SECRET2: ${{ secrets.APPLICATION_NAVERMAIL_YML }}
-          OCCUPY_SECRET_DIR: src/main/resources
-          OCCUPY_SECRET_DIR_FILE_NAME1: application.properties
-#        OCCUPY_SECRET_DIR_FILE_NAME2: application-navermail.yml
-        run: echo $OCCUPY_SECRET | base64 --decode > $APPLICATION_PROPERTIES/$OCCUPY_SECRET_DIR_FILE_NAME1
+#      - name: Set Secret
+#        env:
+#          OCCUPY_SECRET: ${{ secrets.APPLICATION_PROPERTIES }}
+##        OCCUPY_SECRET2: ${{ secrets.APPLICATION_NAVERMAIL_YML }}
+#          OCCUPY_SECRET_DIR: src/main/resources
+#          OCCUPY_SECRET_DIR_FILE_NAME1: application.properties
+##        OCCUPY_SECRET_DIR_FILE_NAME2: application-navermail.yml
+#        run: echo $OCCUPY_SECRET | base64 --decode > $APPLICATION_PROPERTIES/$OCCUPY_SECRET_DIR_FILE_NAME1
 
       # (3) Gradle build (Test 제외)
       - name: Build with Gradle
