@@ -31,6 +31,10 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+      - uses: actions/checkout@v3
+      - run: touch ./src/main/resources/application.properties
+      - run: echo "${{ secrets.APPLICATION_PROPERTIES }}" > ./src/main/resources/application.properties
+      - run: cat ./src/main/resources/application.properties
 
       - name: Set executable permission for gradlew
         run: chmod +x ./gradlew
@@ -43,10 +47,10 @@ jobs:
 #          OCCUPY_SECRET_DIR_FILE_NAME1: application.properties
 ##        OCCUPY_SECRET_DIR_FILE_NAME2: application-navermail.yml
 #        run: echo $OCCUPY_SECRET | base64 --decode > $APPLICATION_PROPERTIES/$OCCUPY_SECRET_DIR_FILE_NAME1
-      - name: Set Properties
-        run: |
-          echo "${{secrets.APPLICATION_PROPERTIES}}" | base64 --decode > src/main/resources/application.properties
-          find src
+#      - name: Set Properties
+#        run: |
+#          echo "${{secrets.APPLICATION_PROPERTIES}}" | base64 --decode > src/main/resources/application.properties
+#          find src
       # (3) Gradle build (Test 제외)
       - name: Build with Gradle
         uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
