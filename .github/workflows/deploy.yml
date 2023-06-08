@@ -40,6 +40,7 @@ jobs:
         run: chmod +x ./gradlew
 
 #      - name: Set Secret
+
 #        env:
 #          OCCUPY_SECRET: ${{ secrets.APPLICATION_PROPERTIES }}
 ##        OCCUPY_SECRET2: ${{ secrets.APPLICATION_NAVERMAIL_YML }}
